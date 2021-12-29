@@ -1,0 +1,12 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<h1>Really delete {{todo_name}}?</h1>
+<h3>This action <em>cannot</em> be reversed.</h3>
+
+<form method="post" action="#">
+	{%csrf_token%}
+	<button type="submit" name="really-delete" value="really-delete">Yes</button>
+	<button type="submit" name="dont-delete" value="dont-delete">No</button>
+</form>
+{% endblock %}

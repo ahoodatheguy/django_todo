@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Welcome! {% endblock %}
+
+
+{% block content %}
+<h1>Your Todo Lists</h1>
+
+<ul>
+	{% for todo in todolists %}
+	<li><a href="/{{todo.id}}">{{todo}}</a></li>
+	{% endfor %}
+</ul>
+{% endblock %}
