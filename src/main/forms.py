@@ -8,3 +8,4 @@ class CreateNewList(forms.Form):
 class CreateNewTask(forms.Form):
 	name = forms.CharField(label='Task Name', max_length=300)
 	completed = forms.BooleanField(required=False, label='Completed')
+	description = forms.CharField(required=False, max_length=500)

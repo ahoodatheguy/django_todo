@@ -73,10 +73,11 @@ def create_task(response, id):
 		if form.is_valid():
 			name = form.cleaned_data['name']
 			complete = form.cleaned_data['completed']
+			description = form.cleaned_data['description']
 			print(name)
 			print(complete)
 			t = ToDoList.objects.get(id=id)
-			t.item_set.create(text=name, complete=complete)
+			t.item_set.create(text=name, complete=complete, description=description)
 			t.save()
 			return HttpResponseRedirect(f"/{t.id}")
 		else:
@@ -87,4 +88,15 @@ def create_task(response, id):
 # TODO View details on individual items.
 def view_item(response, list_id, item_id):
 	todo_item = ToDoList.objects.get(id=list_id).item_set.get(id=item_id)
-	return render(response, 'main/item.html', {'todo': todo_item})
+	return render(response, 'main/item.html', {'todo': todo_item, 'list_id': list_id, 'item_id': item_id})
+
+
+def delete_item(response, list_id, item_id):
+	todo_item = ToDoList.objects.get(id=list_id).item_set.get(id=item_id)
+	if response.POST.get('really-delete'):
+		todo_item.delete()
+		return HttpResponseRedirect(f'/{list_id}')
+	elif response.POST.get('dont-delete'):
+		return HttpResponseRedirect(f'/{list_id}')
+
+	return render(response, 'main/confirm-item-delete.html', {'todo': todo_item, 'list_id': list_id, 'item_id': item_id})

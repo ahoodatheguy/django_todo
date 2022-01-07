@@ -1,7 +1,10 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-	<h1>{{todo}}</h1>
-	<hr>
-	<p>{{todo.description}}</p>
+	<form action="/{{list_id}}/item/{{item_id}}/delete" method="POST">
+		{% csrf_token %}
+		<h1>{{todo}}</h1>
+		<p>{{todo.description}}</p>
+		<button>Delete Task</button>
+	</form>
 {% endblock content %}

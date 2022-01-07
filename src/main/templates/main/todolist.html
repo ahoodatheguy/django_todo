@@ -6,7 +6,7 @@
 <h1>{{todo_name}}</h1>
 <form method="post" action="#">
 	{% csrf_token %}
-	<!-- TODO Allow for ability to delete individual tasks. -->
+	<!-- DONE Allow for ability to delete individual tasks. -->
 	<ul>
 		{% for item in items %}
 			{% if item.complete == False %}
