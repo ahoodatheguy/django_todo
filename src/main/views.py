@@ -1,3 +1,4 @@
+from django.http import response
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 from main.models import ToDoList
@@ -19,16 +20,15 @@ def view_todos(response, id):
 					item.complete = False
 				item.save()
 		# DONE Added way to delete lists
-		# TODO Add ability to delete specific tasks.
 		elif response.POST.get('delete-list'):
 			return HttpResponseRedirect(f'/{id}/delete')
 		elif response.POST.get('new-item'):
 			return HttpResponseRedirect(f'{id}/create-task')
-	return render(response, 'main/todolist.html', {'todo_name': ls, 'items': items})
+	return render(response, 'main/todolist.html', {'todo_name': ls, 'items': items, 'id': id})
 
 
 def confirm_list_delete(response, id):
-	# DONE Make user confirm if they *really* want to delete a list
+	# DONE Made user confirm if they *really* want to delete a list
 	ls = ToDoList.objects.get(id=id)
 
 	if response.method == 'POST':
@@ -82,3 +82,9 @@ def create_task(response, id):
 		else:
 			form = CreateNewTask()
 	return render(response, 'main/create-task.html', {'form': form, 'id': id})
+
+
+# TODO View details on individual items.
+def view_item(response, list_id, item_id):
+	todo_item = ToDoList.objects.get(id=list_id).item_set.get(id=item_id)
+	return render(response, 'main/item.html', {'todo': todo_item})
