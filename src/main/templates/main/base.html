@@ -2,6 +2,10 @@
 <html lang="en">
 
 <head>
+	<!-- Bootstrap Stuff -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 	<meta charset="UTF-8">
 	<title>
 		{% block title %}
@@ -14,7 +18,7 @@
 		<a href="/">Home</a>
 		<a href="/create-list">Create a List</a>
 	</div>
-	<div id="content" name="content" class="main">
+	<div id="content" name="content" class="main container">
 		{% block content %}
 		{% endblock %}
 	</div>
@@ -39,7 +43,7 @@
 	}
 
 	#sidebar a {
-		padding-top: 6px 8px 6px 16px;
+		padding-top: 6px 8px 6px 32px;
 		font-size: 25px;
 		color: #818181;
 		display: block;

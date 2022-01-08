@@ -11,7 +11,7 @@
 		{% for item in items %}
 			{% if item.complete == False %}
 				<li>
-					<input type="checkbox" , value="clicked" , name="c{{item.id}}">
+					<input type="checkbox" , value="clicked" , name="c{{item.id}}" class="mr-1">
 					<a href="{{id}}/item/{{item.id}}">{{item.text}}</a>
 				</li>
 			{% endif %}
@@ -23,14 +23,14 @@
 		{% for item in items %}
 		{% if item.complete == True %}
 		<li>
-			<input type="checkbox" value="clicked" name="c{{item.id}}" checked>
+			<input type="checkbox" value="clicked" name="c{{item.id}}" class="mr-1" checked>
 			<a href="{{id}}/item/{{item.id}}">{{item.text}}</a>
 		</li>
 		{% endif %}
 		{% endfor %}
 	</ul>
-	<button type="submit" , name="save" , value="save">Save Changes</button>
-	<button type="submit" , name="new-item" , value="new-item">Create New Task</button>
-	<button type="submit" , name="delete-list" , value="delete-list">Delete Current List</button>
+	<button type="submit" , name="save" , value="save" class="btn btn-success">Save Changes</button>
+	<button type="submit" , name="new-item" , value="new-item" class="btn btn-primary">Create New Task</button>
+	<button type="submit" , name="delete-list" , value="delete-list" class="btn btn-warning">Delete Current List</button>
 </form>
 {% endblock %}

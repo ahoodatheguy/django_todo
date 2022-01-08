@@ -6,7 +6,7 @@
 
 <form method="post" action="#">
 	{% csrf_token %}
-	<button type="submit" name="really-delete" value="really-delete">Yes</button>
-	<button type="submit" name="dont-delete" value="dont-delete">No</button>
+	<button type="submit" name="really-delete" value="really-delete" class="btn btn-danger">Yes</button>
+	<button type="submit" name="dont-delete" value="dont-delete" class="btn btn-primary">No</button>
 </form>
 {% endblock %}
